@@ -1,0 +1,139 @@
+/* =====================================================================
+   CareerOS AI Suite — Design Tokens (globals.css)
+   Source of truth: design/references/CareerOS.dc.html
+   Do NOT invent values. These are the exact tokens used in the prototype.
+   Strategy: single set of semantic CSS variables, re-mapped per theme
+   ([data-theme]) and per accent ([data-accent]). Tailwind reads them
+   through hsl-free var() references (see tailwind.config.ts).
+   ===================================================================== */
+
+/* ---------- DARK (default) ---------- */
+:root,
+[data-theme="dark"] {
+  --bg: #0a0b0e;
+  --bg-elev: #101216;
+  --bg-elev-2: #171a20;
+  --bg-inset: #0c0e12;
+
+  --border: #20242c;
+  --border-strong: #2b3039;
+
+  --text: #f3f5f8;
+  --muted: #98a0ac;
+  --dim: #646c79;
+
+  /* accent shown here is the DEFAULT (blue index). See accent overrides below. */
+  --accent: #4f8cff;
+  --accent-2: #7c8bff;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(79, 140, 255, 0.15);
+  --accent-line: rgba(79, 140, 255, 0.32);
+
+  --good: #34d399;
+  --warn: #fbbf24;
+  --bad: #f87171;
+  --info: #60a5fa;
+  --good-soft: rgba(52, 211, 153, 0.14);
+  --warn-soft: rgba(251, 191, 36, 0.14);
+  --bad-soft: rgba(248, 113, 113, 0.14);
+  --info-soft: rgba(96, 165, 250, 0.14);
+
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 16px 40px -12px rgba(0, 0, 0, 0.55);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- LIGHT ---------- */
+[data-theme="light"] {
+  --bg: #f6f8fb;
+  --bg-elev: #ffffff;
+  --bg-elev-2: #f2f4f8;
+  --bg-inset: #f8fafc;
+
+  --border: #e7eaf0;
+  --border-strong: #d4d9e2;
+
+  --text: #0b1220;
+  --muted: #5a6573;
+  --dim: #8b94a2;
+
+  --accent: #2563eb;
+  --accent-2: #6d4aff;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(37, 99, 235, 0.08);
+  --accent-line: rgba(37, 99, 235, 0.22);
+
+  --good: #059669;
+  --warn: #d97706;
+  --bad: #dc2626;
+  --info: #2563eb;
+  --good-soft: rgba(5, 150, 105, 0.1);
+  --warn-soft: rgba(217, 119, 6, 0.1);
+  --bad-soft: rgba(220, 38, 38, 0.1);
+  --info-soft: rgba(37, 99, 235, 0.1);
+
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 18px 40px -16px rgba(16, 24, 40, 0.16);
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+}
+
+/* ---------- ACCENT OVERRIDES (brand default is VIOLET) ----------
+   The shipped product default is violet. Blue + cyan are alternate
+   accents selectable in Settings/Tweaks. Apply on the theme root, e.g.
+   <html data-theme="dark" data-accent="violet">                        */
+[data-accent="violet"] {
+  --accent: #9a6bff;
+  --accent-2: #b794ff;
+  --accent-soft: rgba(154, 107, 255, 0.16);
+  --accent-line: rgba(154, 107, 255, 0.34);
+}
+[data-accent="cyan"] {
+  --accent: #22b8cf;
+  --accent-2: #56c7d8;
+  --accent-soft: rgba(34, 184, 207, 0.15);
+  --accent-line: rgba(34, 184, 207, 0.32);
+}
+
+/* ---------- GLOBAL RESET / BASE ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: "Geist", "Geist Fallback", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Theme cross-fade — every element eases bg/border/color on theme swap.
+   In React, keep this global; it is what makes the Dark/Light toggle feel
+   premium. Duration 320ms bg/border, 200ms color. */
+* {
+  transition:
+    background-color 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.2s ease,
+    box-shadow 0.3s ease,
+    fill 0.3s ease;
+}
+
+/* ---------- KEYFRAMES (mirrored in Framer Motion, see motion-spec.md) ---------- */
+@keyframes viewIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes popIn { 0% { opacity: 0; transform: scale(0.92); } 60% { transform: scale(1.02); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes glowPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+@keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalIn { 0% { opacity: 0; transform: translateY(14px) scale(0.96); } 100% { opacity: 1; transform: none; } }
+@keyframes rowIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes editGlow {
+  0%, 100% { box-shadow: 0 0 0 1px var(--accent-2), 0 0 0 4px color-mix(in srgb, var(--accent-2) 22%, transparent); }
+  50%      { box-shadow: 0 0 0 1px var(--accent-2), 0 0 0 7px color-mix(in srgb, var(--accent-2) 8%, transparent); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- SCROLLBAR ---------- */
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 9px; border: 3px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-thumb:hover { background: var(--dim); background-clip: content-box; }
+::-webkit-scrollbar-track { background: transparent; }
+
+input, button, textarea, select { font-family: inherit; }
+input:focus, textarea:focus { outline: none; }

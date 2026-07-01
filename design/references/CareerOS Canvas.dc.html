@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+.cv-wrap{font-family:'Geist',system-ui,sans-serif}
+.cv-frm{position:absolute}
+.cv-label{display:flex;align-items:center;gap:9px;margin-bottom:11px;cursor:grab}
+.cv-num{font-size:12px;font-weight:600;color:#fff;background:#9a6bff;min-width:24px;height:24px;padding:0 7px;border-radius:7px;display:flex;align-items:center;justify-content:center}
+.cv-title{font-size:14px;font-weight:600;color:#1a1d24;letter-spacing:-.2px}
+.cv-mode{font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:20px}
+.cv-dark{background:#1a1d24;color:#cbd2dd}
+.cv-light{background:#eef1f6;color:#4a5563;border:1px solid #dfe4ec}
+.cv-biz{background:#efe7ff;color:#7c3aed;border:1px solid #e0d2ff}
+.cv-card{background:#fff;border-radius:4px;box-shadow:0 1px 3px rgba(16,24,40,.10),0 14px 36px -14px rgba(16,24,40,.2);overflow:hidden}
+.cv-scale{transform:scale(.6);transform-origin:top left}
+.cv-scale iframe{width:1400px;height:900px;border:none;display:block}
+</style>
+</helmet>
+<div class="cv-wrap" style="position:absolute;left:40px;top:30px;width:2680px">
+  <div class="cv-label" data-drags-parent="1" style="margin-bottom:24px">
+    <div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(140deg,#9a6bff,#b794ff);display:flex;align-items:center;justify-content:center">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4-8 4-8-4z"></path><path d="M4 12l8 4 8-4"></path><path d="M4 17l8 4 8-4"></path></svg>
+    </div>
+    <div>
+      <div style="font-size:20px;font-weight:600;color:#12151b;letter-spacing:-.3px">CareerOS AI Suite · Sistema completo</div>
+      <div style="font-size:13px;color:#5a6573">14 pantallas · Dark &amp; Light · 3 ediciones (Public / Private / Business)</div>
+    </div>
+  </div>
+</div>
+<!-- Each frame: 840w card holds a 1400x900 iframe at .6 = 840x540 -->
+<div class="cv-frm" style="left:40px;top:118px;width:840px">
+  <div class="cv-label" data-drags-parent="1"><span class="cv-num">1</span><span class="cv-title">Dashboard</span><span class="cv-mode cv-dark">Dark</span></div>
+  <div class="cv-card" style="width:840px;height:540px"><div class="cv-scale"><iframe src="CareerOS.dc.html?route=dashboard&theme=dark&lang=es"></iframe></div></div>
+</div>
+<div class="cv-frm" style="left:920px;top:118px;width:840px">
+  <div class="cv-label" data-drags-parent="1"><span class="cv-num">2</span><span class="cv-title">Pipeline (Kanban)</span><span class="cv-mode cv-light">Light</span></div>
+  <div class="cv-card" style="width:840px;height:540px"><div class="cv-scale"><iframe src="CareerOS.dc.html?route=pipeline&theme=light&lang=es"></iframe></div></div>
+</div>
+<div class="cv-frm" style="left:1800px;top:118px;width:840px">
+  <div class="cv-label" data-drags-parent="1"><span class="cv-num">3</span><span class="cv-title">Análisis IA</span><span class="cv-mode cv-dark">Dark</span></div>
+  <div class="cv-card" style="width:840px;height:540px"><div class="cv-scale"><iframe src="CareerOS.dc.html?route=analysis&theme=dark&lang=es"></iframe></div></div>
+</div>
+
+<div class="cv-frm" style="left:40px;top:740px;width:840px">
+  <div class="cv-label" data-drags-parent="1"><span class="cv-num">4</span><span class="cv-title">Ofertas (listado + CRUD)</span><span class="cv-mode cv-light">Light</span></div>
+  <div class="cv-card" style="width:840px;height:540px"><div class="cv-scale"><iframe src="CareerOS.dc.html?route=offers&theme=light&lang=es"></iframe></div></div>
+</div>
+<div class="cv-frm" style="left:920px;top:740px;width:840px">
+  <div class="cv-label" data-drags-parent="1"><span class="cv-num">5</span><span class="cv-title">Detalle de aplicación (Q&amp;A, credenciales)</span><span class="cv-mode cv-dark">Dark</span></div>
+  <div class="cv-card" style="width:840px;height:540px"><div class="cv-scale"><iframe src="CareerOS.dc.html?view=1&theme=dark&lang=es"></iframe></div></div>
+</div>
+<div class="cv-frm" style="left:1800px;top:740px;width:840px">
+  <div class="cv-label" data-drags-parent="1"><span class="cv-num">6</span><span class="cv-title">Nueva oferta (formulario)</span><span class="cv-mode cv-light">Light</span></div>
+  <div class="cv-card" style="width:840px;height:540px"><div class="cv-scale"><iframe src="CareerOS.dc.html?route=offerForm&mode=add&theme=light&lang=es"></iframe></div></div>
+</div>
+
+<div class="cv-frm" style="left:40px;top:1362px;width:840px">
+  <div class="cv-label" data-drags-parent="1"><span class="cv-num">7</span><span class="cv-title">CV Manager (IA bloqueada)</span><span class="cv-mode cv-dark">Dark</span><span class="cv-mode cv-light">Private</span></div>
+  <div class="cv-card" style="width:840px;height:540px"><div class="cv-scale"><iframe src="CareerOS.dc.html?route=cvs&theme=dark&lang=es&edition=private"></iframe></div></div>
+</div>
+<div class="cv-frm" style="left:920px;top:1362px;width:840px">
+  <div class="cv-label" data-drags-parent="1"><span class="cv-num">8</span><span class="cv-title">Comparador IA (RAG)</span><span class="cv-mode cv-light">Light</span></div>
+  <div class="cv-card" style="width:840px;height:540px"><div class="cv-scale"><iframe src="CareerOS.dc.html?route=comparator&theme=light&lang=es"></iframe></div></div>
+</div>
+<div class="cv-frm" style="left:1800px;top:1362px;width:840px">
+  <div class="cv-label" data-drags-parent="1"><span class="cv-num">9</span><span class="cv-title">Agentes IA (orquestación)</span><span class="cv-mode cv-dark">Dark</span><span class="cv-mode cv-biz">Business</span></div>
+  <div class="cv-card" style="width:840px;height:540px"><div class="cv-scale"><iframe src="CareerOS.dc.html?route=agents&theme=dark&lang=es&edition=business"></iframe></div></div>
+</div>
+
+<div class="cv-frm" style="left:40px;top:1984px;width:840px">
+  <div class="cv-label" data-drags-parent="1"><span class="cv-num">10</span><span class="cv-title">Configuración (cambio de edición)</span><span class="cv-mode cv-light">Light</span></div>
+  <div class="cv-card" style="width:840px;height:540px"><div class="cv-scale"><iframe src="CareerOS.dc.html?route=settings&theme=light&lang=es"></iframe></div></div>
+</div>
+<div class="cv-frm" style="left:920px;top:1984px;width:840px">
+  <div class="cv-label" data-drags-parent="1"><span class="cv-num">11</span><span class="cv-title">Demo Mode (datos de ejemplo)</span><span class="cv-mode cv-dark">Dark</span><span class="cv-mode cv-light">Public</span></div>
+  <div class="cv-card" style="width:840px;height:540px"><div class="cv-scale"><iframe src="CareerOS.dc.html?route=dashboard&theme=dark&lang=es&edition=public"></iframe></div></div>
+</div>
+<div class="cv-frm" style="left:1800px;top:1984px;width:840px">
+  <div class="cv-label" data-drags-parent="1"><span class="cv-num">12</span><span class="cv-title">Login / Register</span><span class="cv-mode cv-light">Light</span></div>
+  <div class="cv-card" style="width:840px;height:540px"><div class="cv-scale"><iframe src="CareerOS.dc.html?route=login&theme=light&lang=es"></iframe></div></div>
+</div>
+
+<div class="cv-frm" style="left:40px;top:2606px;width:840px">
+  <div class="cv-label" data-drags-parent="1"><span class="cv-num">13</span><span class="cv-title">Candidaturas (listado)</span><span class="cv-mode cv-dark">Dark</span></div>
+  <div class="cv-card" style="width:840px;height:540px"><div class="cv-scale"><iframe src="CareerOS.dc.html?route=candidacies&theme=dark&lang=es"></iframe></div></div>
+</div>
+<div class="cv-frm" style="left:920px;top:2606px;width:840px">
+  <div class="cv-label" data-drags-parent="1"><span class="cv-num">14</span><span class="cv-title">Nueva candidatura (formulario)</span><span class="cv-mode cv-light">Light</span></div>
+  <div class="cv-card" style="width:840px;height:540px"><div class="cv-scale"><iframe src="CareerOS.dc.html?route=candidacyForm&theme=light&lang=es"></iframe></div></div>
+</div>
+</x-dc>
+</body>
+</html>
